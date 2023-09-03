@@ -10,5 +10,11 @@ fun KnowledgeBaseScreen(
     viewModel: KnowledgeBaseViewModel = hiltViewModel()
 ) {
     val state = viewModel.state.collectAsState()
-    Text(text = state.value.contents.toString())
+    state.value.contents?.records?.let {
+        if (it.isNotEmpty()) {
+            Text(text=it[0]?.createdTime ?: "00:00")
+        }
+    }
+    //Text(text = state.value.contents.toString())
+
 }
