@@ -68,7 +68,7 @@ fun FieldsDto.toFields(): Fields {
         question = question,
         answer = answer,
         category = category,
-        image = ArrayList(image?.mapNotNull { it.toImage() }),
+        image = image?.mapNotNull { it.toImage() },
         videoUrl = videoUrl
     )
 }
@@ -83,6 +83,6 @@ fun RecordsDto.toRecords(): Records {
 
 fun ContentsDto.toContents(): Contents {
     return Contents(
-        records = ArrayList(records?.map { it.toRecords() })
+        records = records.map { it.toRecords() }
     )
 }

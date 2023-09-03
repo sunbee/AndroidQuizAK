@@ -1,7 +1,5 @@
 package com.example.androidquiz.domain.model
 
-import com.squareup.moshi.Json
-
 data class Image(
     val id: String,
     val width: Int,
