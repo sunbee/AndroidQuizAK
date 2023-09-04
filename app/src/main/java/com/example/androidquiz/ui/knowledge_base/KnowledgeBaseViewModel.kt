@@ -2,9 +2,11 @@ package com.example.androidquiz.ui.knowledge_base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.room.Query
 import com.example.androidquiz.domain.repository.KnowledgeBaseRepository
 import com.example.androidquiz.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -18,19 +20,22 @@ class KnowledgeBaseViewModel @Inject constructor(
     val state = MutableStateFlow(KnowledgeBaseState())
 
     init {
-        getKnowledgeBase()
+        getKnowledgeBase(fetchFromRemote = true)
     }
 
-    fun getKnowledgeBase() {
-        viewModelScope.launch {
+    fun getKnowledgeBase(
+        fetchFromRemote: Boolean = false,
+        query: String = ""
+    ) {
+        viewModelScope.launch(Dispatchers.IO) {
             knowledgeBaseRepository
-                .getKnowledgeBase()
+                .getKnowledgeBase(fetchFromRemote, query)
                 .collect() { result ->
                     when(result) {
                         is Resource.Success -> {
-                            result.data?.let { contents ->
+                            result.data?.let { knowledgeBaseItems ->
                                 state.value = state.value.copy(
-                                    contents = contents
+                                    items = knowledgeBaseItems
                                 )
                             }
                         }

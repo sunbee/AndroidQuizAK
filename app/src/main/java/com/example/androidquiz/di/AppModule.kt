@@ -1,5 +1,8 @@
 package com.example.androidquiz.di
 
+import android.app.Application
+import androidx.room.Room
+import com.example.androidquiz.data.local.KnowledgeBaseDatabase
 import com.example.androidquiz.data.remote.KnowledeBaseApi
 import dagger.Module
 import dagger.Provides
@@ -13,6 +16,17 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
+
+    @Provides
+    @Singleton
+    fun getKnowledgeBaseDatabase(app: Application): KnowledgeBaseDatabase {
+        return Room.databaseBuilder(
+            app,
+            KnowledgeBaseDatabase::class.java,
+            "knowledgedb"
+        ).build()
+    }
+
     @Provides
     @Singleton
     fun getKnowledgeBaseApi(): KnowledeBaseApi {
