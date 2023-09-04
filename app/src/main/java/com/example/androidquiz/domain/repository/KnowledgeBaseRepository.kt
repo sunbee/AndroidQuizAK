@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 interface KnowledgeBaseRepository {
 
     suspend fun getKnowledgeBase(
-        fetchFromRemote: Boolean,
-        query: String
+        fetchFromRemote: Boolean = false,
+        query: String = ""
     ): Flow<Resource<List<KnowledgeBaseItem>>>
 }

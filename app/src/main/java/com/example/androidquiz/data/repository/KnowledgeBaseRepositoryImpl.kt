@@ -67,7 +67,7 @@ class KnowledgeBaseRepositoryImpl @Inject constructor(
                     }
                 )
                 emit(Resource.Success(
-                    data = dao.searchKnowledgeBase("").map {
+                    data = dao.searchKnowledgeBase(query).map {
                         it.toKnowledgeBaseItem()
                     }
                 ))
