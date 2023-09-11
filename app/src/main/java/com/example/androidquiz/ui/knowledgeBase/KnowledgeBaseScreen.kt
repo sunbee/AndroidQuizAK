@@ -77,6 +77,9 @@ fun KnowledgeBaseScreen(
                     }
                 }
                 Spacer(modifier = Modifier.height(8.dp))
+                nugget.imageUrl?.let {
+                    KnowledgeBaseImage(imageURI = it)
+                }
                 Text(
                     text = nugget.answer,
                     fontWeight = FontWeight.Medium,
@@ -85,7 +88,6 @@ fun KnowledgeBaseScreen(
                         .fillMaxWidth()
                 )
                 Spacer(modifier = Modifier.height(8.dp))
-
                 YouTubeUrlParser.extractVideoId(nugget.videoUrl.toString())?.let { youTubeVideoId ->
                     Log.d("VIDEO", youTubeVideoId)
                     Text(
