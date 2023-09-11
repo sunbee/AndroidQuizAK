@@ -19,10 +19,10 @@ interface KnowledgeBaseDao {
         """
             SELECT * 
             FROM KnowledgeBaseEntity
-            WHERE LOWER(category) LIKE '%' || LOWER(:query) || '%'
+            WHERE LOWER(category) LIKE '%' || LOWER(:category) || '%'
         """
     )
-    fun searchKnowledgeBase(query: String): List<KnowledgeBaseEntity>
+    fun searchKnowledgeBase(category: String): List<KnowledgeBaseEntity>
 
     /* CRU(D) */
     @Query("DELETE FROM KnowledgeBaseEntity")

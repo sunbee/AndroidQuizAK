@@ -11,5 +11,6 @@ data class KnowledgeBaseEntity(
     val category: String,
     val thumbnailUrl: String? = null,
     val imageUrl: String? = null,
-    val videoUrl: String? = null
+    val videoUrl: String? = null,
+    val startSeconds: Float? = 0f
 )

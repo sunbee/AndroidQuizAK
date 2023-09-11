@@ -62,10 +62,14 @@ class KnowledgeBaseViewModel @Inject constructor(
 
     fun advanceIndex() {
         var presentIndex = state.value.currentIndex
-        if (presentIndex < state.value.items.size) {
+        if (presentIndex < state.value.items.size-1) {
             presentIndex += 1
+        } else {
+            presentIndex = 0
         }
-        state.value = state.value.copy(currentIndex = presentIndex)
+        state.value = state.value.copy(
+            currentIndex = presentIndex,
+            showQuestionOnly = true)
     }
 
     fun displayAnswer() {
@@ -81,13 +85,12 @@ class KnowledgeBaseViewModel @Inject constructor(
                 advanceIndex()
             }
             is KnowledgeBaseEvent.OnClickedPartial -> {
-                TODO(/* Record performance and update current index to advance to next question */)
+                advanceIndex()
             }
             is KnowledgeBaseEvent.OnClickedIncorrect -> {
-                TODO(/* Record performance and update current index to advance to next question */)
+                advanceIndex()
             }
             else -> Unit
         }
-
     }
 }

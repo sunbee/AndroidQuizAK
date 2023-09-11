@@ -24,7 +24,7 @@ object AppModule {
             app,
             KnowledgeBaseDatabase::class.java,
             "knowledgedb"
-        ).build()
+        ).fallbackToDestructiveMigration().build()
     }
 
     @Provides

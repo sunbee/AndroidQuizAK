@@ -6,5 +6,6 @@ data class Fields(
     val answer: String? = null,
     val category: String? = null,
     val image: List<Image>? = listOf<Image>(),
-    val videoUrl: String? = null
+    val videoUrl: String? = null,
+    val startSeconds: Float? = 0f
 )

@@ -105,4 +105,12 @@ dependencies {
 
     // SwipeRefresh
     implementation("com.google.accompanist:accompanist-swiperefresh:0.24.2-alpha")
+
+    // Video Player
+    val media3_version = "1.0.0"
+    implementation("androidx.media3:media3-exoplayer:$media3_version")
+    implementation("androidx.media3:media3-ui:$media3_version")
+    implementation("androidx.media3:media3-exoplayer-hls:$media3_version")
+
+    implementation("com.pierfrancescosoffritti.androidyoutubeplayer:core:11.1.0")
 }

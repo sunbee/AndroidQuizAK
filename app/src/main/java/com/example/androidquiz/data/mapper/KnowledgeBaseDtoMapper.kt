@@ -69,7 +69,8 @@ fun FieldsDto.toFields(): Fields {
         answer = answer,
         category = category,
         image = image?.mapNotNull { it.toImage() },
-        videoUrl = videoUrl
+        videoUrl = videoUrl,
+        startSeconds = startSeconds
     )
 }
 
